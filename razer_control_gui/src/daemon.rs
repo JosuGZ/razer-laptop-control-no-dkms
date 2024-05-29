@@ -216,7 +216,7 @@ fn main() {
     if let Some(listener) = comms::create() {
         for stream in listener.incoming() {
             match stream {
-                Ok(stream) => handle_data(stream),
+                Ok(stream) => spawn_client_handler(stream),
                 Err(_) => {} // Don't care about this
             }
         }
@@ -237,6 +237,10 @@ fn setup_panic_hook() {
         }
         default_panic_hook(info);
     }));
+}
+
+fn spawn_client_handler(mut stream: UnixStream) {
+    std::thread::spawn(|| handle_data(stream));
 }
 
 fn handle_data(mut stream: UnixStream) {
