@@ -19,7 +19,7 @@ jobs:
     - uses: rui314/setup-mold@v1
     - uses: awalsh128/cache-apt-pkgs-action@latest
       with:
-        packages:  libdbus-1-dev libusb-dev libhidapi-dev libhidapi-hidraw0 pkg-config libudev-dev libgdk-pixbuf2.0-dev libcairo-dev libatk1.0-dev libpango1.0-dev
+        packages:  libdbus-1-dev libusb-dev libhidapi-dev libhidapi-hidraw0 pkg-config libudev-dev libgtk-3-dev libgdk-pixbuf2.0-dev libcairo-dev libatk1.0-dev libpango1.0-dev
         version: 1.0
           
     - name: "Install Rust"
